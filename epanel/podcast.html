@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <script>
+    function setUserAgent(window, userAgent) {
+    if (window.navigator.userAgent != userAgent) {
+        var userAgentProp = { get: function () { return userAgent; } };
+        try {
+            Object.defineProperty(window.navigator, 'userAgent', userAgentProp);
+        } catch (e) {
+            window.navigator = Object.create(navigator, {
+                userAgent: userAgentProp
+            });
+        }
+    }
+}
+</script>
+<style>
+    .soundItem__blockedMessage, .soundItem__content
+    {
+        font-size:40px !important;
+    }
+</style>
+</head>
+<body>
+<iframe width="100%" height="100% "  frameborder="no"
+  src="https://w.soundcloud.com/player/?url=https://soundcloud.com/gerry-gibson-485133288&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>    
+  
+  <script>
+      setUserAgent(document.querySelector('iframe').contentWindow, 'MANnDAaR Fake Agent');
+  </script>
+</body>    
+</html>
+
